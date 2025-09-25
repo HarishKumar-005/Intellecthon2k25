@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intellecthon 2025 | 12-Hour AI Hackathon | PSVPEC</title>
     <meta name="description" content="Join Intellecthon 2025 at PSVPEC — a 12-hour national hackathon on Nov 1, 2025. Teams of 3–5 students build AI-powered software solutions across healthcare, agriculture, smart cities, edutech and more. Free registration.">
-    
+    <!-- Chosen Palette: "Prestige" - A dual-tone theme balancing a professional, light-gray background for clarity with a deep navy blue for impact, accented by a vibrant golden-yellow. -->
+    <!-- Application Structure Plan: A single-page, top-to-bottom scrolling narrative. Starts with a high-impact hero section with an interactive, dynamic background, stat cards, and countdown timer. Flows logically through branded sections: 'About', 'Tracks', 'Timeline', 'Prizes', 'Register', 'Rules', 'Resources', 'Schedule', 'Contact', and a 'FAQ' section. Fully responsive design implemented. -->
+    <!-- Visualization & Content Choices: Event Info -> Goal: Inform & Excite -> Viz/Presentation: JS countdown timer and hero stat cards. Tracks -> Goal: Organize & Engage -> Viz: Thematic background images with gradient overlays and interactive hover effects. About section uses polished Font Awesome icons with key data highlights. Timeline & Schedule -> Goal: Clarify Flow -> Viz: A vertical CSS/HTML timeline. Prizes -> Goal: Excite -> Viz: A tiered "Winner's Podium" layout. FAQ -> Goal: Inform -> Viz: An interactive accordion. Hero section uses a mouse-interactive canvas animation for a high-tech feel. NO SVG/Mermaid used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -18,7 +21,7 @@
             --light-text: #e0e0e0;
         }
         html {
-            scroll-padding-top: 80px;
+            scroll-padding-top: 70px;
         }
         body {
             font-family: 'Poppins', sans-serif;
@@ -170,6 +173,7 @@
             transform: translateX(-50%);
         }
         @media (max-width: 768px) {
+            html { scroll-padding-top: 60px; }
             .timeline::before { left: 10px; }
             .timeline-item { width: 100%; padding-left: 50px; padding-right: 20px; text-align: left; }
             .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { left: 0; padding-right: 20px; text-align: left; }
@@ -200,10 +204,10 @@
 
     <!-- Header -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-4">
-                <img src="./images/Prince-header-logo.jpg" alt="PSVPEC College Logo" class="h-12">
-                <img src="./images/Intellecthon-logo.jpg" alt="INTELLECTHON Logo" class="h-10">
+        <div class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 sm:gap-4">
+                <img src="images/Prince-header-logo.jpg" alt="PSVPEC College Logo" class="h-10 sm:h-12">
+                <img src="images/Intellecthon-logo.jpg" alt="INTELLECTHON Logo" class="h-8 sm:h-10">
             </a>
             <nav class="hidden md:flex space-x-8">
                 <a href="#about" class="text-gray-200 hover:text-yellow-400 transition">About</a>
@@ -212,7 +216,7 @@
                 <a href="#rules" class="text-gray-200 hover:text-yellow-400 transition">Rules</a>
                 <a href="#contact" class="text-gray-200 hover:text-yellow-400 transition">Contact</a>
             </nav>
-            <a href="#register" class="hidden md:block btn-gold py-2 px-6 rounded-full">Register Free</a>
+            <a href="#register" class="hidden md:block btn-gold py-2 px-6 rounded-full">Register Now</a>
              <button id="mobile-menu-btn" class="md:hidden text-white text-3xl focus:outline-none">☰</button>
         </div>
         <!-- Mobile Menu -->
@@ -222,7 +226,7 @@
              <a href="#timeline" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Timeline</a>
              <a href="#rules" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Rules</a>
              <a href="#contact" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Contact</a>
-             <a href="#register" class="block text-center py-4 text-yellow-400 font-bold">Register Free</a>
+             <a href="#register" class="block text-center py-4 text-yellow-400 font-bold">Register Now</a>
         </div>
     </header>
 
@@ -231,45 +235,45 @@
         <section class="hero-bg min-h-screen flex items-center justify-center pt-24 pb-12">
             <canvas id="particle-canvas"></canvas>
             <div class="hero-content text-center px-4">
-                <h1 class="text-5xl md:text-8xl font-black uppercase tracking-wider">
+                <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-wider">
                     INTELLECTHON <span style="color: var(--college-gold);">2025</span>
                 </h1>
-                <p class="text-xl md:text-2xl font-light text-gray-300 mt-4 max-w-4xl mx-auto">
+                <p class="text-lg sm:text-xl md:text-2xl font-light text-gray-300 mt-4 max-w-4xl mx-auto">
                     A 12-Hour National Hackathon for <span class="font-bold" style="color: var(--college-gold);">AI-Powered Software Solutions</span>
                 </p>
-                 <p class="text-lg md:text-xl font-semibold text-white mt-2">Innovate | Impact | Inspire</p>
+                 <p class="text-base sm:text-lg md:text-xl font-semibold text-white mt-2">Innovate | Impact | Inspire</p>
 
                 <div class="mt-8 text-white text-2xl md:text-5xl font-bold flex justify-center items-center space-x-2 md:space-x-6" id="countdown">
-                    <div><span id="days">00</span><p class="text-sm font-normal opacity-70">Days</p></div>
+                    <div><span id="days">00</span><p class="text-xs sm:text-sm font-normal opacity-70">Days</p></div>
                     <div style="color: var(--college-gold);">:</div>
-                    <div><span id="hours">00</span><p class="text-sm font-normal opacity-70">Hours</p></div>
+                    <div><span id="hours">00</span><p class="text-xs sm:text-sm font-normal opacity-70">Hours</p></div>
                     <div style="color: var(--college-gold);">:</div>
-                    <div><span id="minutes">00</span><p class="text-sm font-normal opacity-70">Minutes</p></div>
+                    <div><span id="minutes">00</span><p class="text-xs sm:text-sm font-normal opacity-70">Minutes</p></div>
                     <div style="color: var(--college-gold);">:</div>
-                    <div><span id="seconds">00</span><p class="text-sm font-normal opacity-70">Seconds</p></div>
+                    <div><span id="seconds">00</span><p class="text-xs sm:text-sm font-normal opacity-70">Seconds</p></div>
                 </div>
                 <div class="mt-12">
                     <a href="#register" class="btn-gold py-4 px-10 rounded-full text-lg">
-                        Register Free — Submit your PPT
+                        Rise to the Challenge 🚀
                     </a>
                 </div>
                  <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                     <div class="hero-stat-card p-4 rounded-xl text-center">
                         <div class="hero-stat-card-content">
-                            <p class="text-3xl font-bold" style="color: var(--college-gold);">Nov 1st 2025</p>
-                            <p class="text-gray-300">Event Date</p>
+                            <p class="text-2xl sm:text-3xl font-bold" style="color: var(--college-gold);">Nov 1st 2025</p>
+                            <p class="text-sm text-gray-300">Event Date</p>
                         </div>
                     </div>
                     <div class="hero-stat-card p-4 rounded-xl text-center">
                         <div class="hero-stat-card-content">
-                            <p class="text-3xl font-bold" style="color: var(--college-gold);">₹1,00,000</p>
-                            <p class="text-gray-300">Prize Pool</p>
+                            <p class="text-2xl sm:text-3xl font-bold" style="color: var(--college-gold);">₹1,00,000</p>
+                            <p class="text-sm text-gray-300">Prize Pool</p>
                         </div>
                     </div>
                     <div class="hero-stat-card p-4 rounded-xl text-center">
                         <div class="hero-stat-card-content">
-                            <p class="text-3xl font-bold" style="color: var(--college-gold);">PSVPEC Campus</p>
-                            <p class="text-gray-300">Venue</p>
+                            <p class="text-2xl sm:text-3xl font-bold" style="color: var(--college-gold);">PSVPEC Campus</p>
+                            <p class="text-sm text-gray-300">Venue</p>
                         </div>
                     </div>
                 </div>
@@ -325,49 +329,49 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.2s;">
-                        <div class="track-card-bg" style="background-image: url(./images/healthcare.jpg);"></div>
+                        <div class="track-card-bg" style="background-image: url('images/healthcare.jpg');"></div>
                         <div class="track-card-content flex flex-col justify-end h-full">
                             <h3 class="text-xl font-semibold text-white">Health Care <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
                             <p class="text-gray-300 mt-2">AI in diagnostics, patient care, and medical technology.</p>
                         </div>
                     </div>
                      <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.3s;">
-                        <div class="track-card-bg" style="background-image: url(./images/agriculture.jpeg);"></div>
+                        <div class="track-card-bg" style="background-image: url('images/agriculture.jpeg');"></div>
                         <div class="track-card-content flex flex-col justify-end h-full">
                             <h3 class="text-xl font-semibold text-white">Agriculture <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
                             <p class="text-gray-300 mt-2">AI for smart farming, crop management, and sustainability.</p>
                         </div>
                     </div>
                      <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.4s;">
-                        <div class="track-card-bg" style="background-image: url(./images/studentinnovation.webp);"></div>
+                        <div class="track-card-bg" style="background-image: url('images/studentinnovation.webp');"></div>
                         <div class="track-card-content flex flex-col justify-end h-full">
                            <h3 class="text-xl font-semibold text-white">Student Innovation <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
                            <p class="text-gray-300 mt-2">Open track for any groundbreaking AI-powered idea.</p>
                         </div>
                     </div>
                      <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.5s;">
-                        <div class="track-card-bg" style="background-image: url(./images/smartcity.webp);"></div>
+                        <div class="track-card-bg" style="background-image: url('images/smartcity.webp');"></div>
                         <div class="track-card-content flex flex-col justify-end h-full">
                             <h3 class="text-xl font-semibold text-white">Smart Cities & Urban Mobility <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
                             <p class="text-gray-300 mt-2">AI to improve urban life, from traffic flow to public services.</p>
                         </div>
                     </div>
                      <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.6s;">
-                        <div class="track-card-bg" style="background-image: url(./images/edutech.png);"></div>
+                        <div class="track-card-bg" style="background-image: url('images/edutech.png');"></div>
                         <div class="track-card-content flex flex-col justify-end h-full">
                             <h3 class="text-xl font-semibold text-white">Education & EduTech <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
                             <p class="text-gray-300 mt-2">AI in learning, teaching tools, and access to education.</p>
                         </div>
                     </div>
                      <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.7s;">
-                        <div class="track-card-bg" style="background-image: url(./images/safety.jpg);"></div>
+                        <div class="track-card-bg" style="background-image: url('images/safety.jpg');"></div>
                         <div class="track-card-content flex flex-col justify-end h-full">
                             <h3 class="text-xl font-semibold text-white">Safety, Protection & Reliability <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
                             <p class="text-gray-300 mt-2">AI solutions for personal, public, and cybersecurity challenges.</p>
                         </div>
                     </div>
                      <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.8s;">
-                        <div class="track-card-bg" style="background-image: url(./images/renewableenergy.jpeg);"></div>
+                        <div class="track-card-bg" style="background-image: url('images/renewableenergy.jpeg');"></div>
                         <div class="track-card-content flex flex-col justify-end h-full">
                             <h3 class="text-xl font-semibold text-white">Renewable & Sustainable Energy <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
                             <p class="text-gray-300 mt-2">AI in sustainable energy generation, storage, and efficiency.</p>
@@ -599,7 +603,7 @@
     <!-- Footer -->
     <footer class="py-12 px-6 text-white" style="background-color: var(--college-blue);">
         <div class="container mx-auto text-center text-gray-300">
-             <img src="./images/Prince-footer-Logo.png" alt="PSVPEC College Logo" class="h-20 mx-auto mb-4">
+             <img src="images/Prince-footer-Logo.png" alt="PSVPEC College Logo" class="h-16 md:h-20 mx-auto mb-4">
             <p class="font-bold text-lg">Prince Shri Venkateshwara Padmavathy Engineering College</p>
             <p>An Autonomous Institution, Ponmar, Chennai - 127</p>
             <p class="mt-2">Organized by the Department of CSE & IT</p>
@@ -713,8 +717,8 @@
                 requestAnimationFrame(animate);
                 ctx.clearRect(0,0,innerWidth, innerHeight);
 
-                for (const element of particlesArray) {
-                    element.update();
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
                 }
                 connect();
             }
@@ -835,4 +839,3 @@
     </script>
 </body>
 </html>
-
