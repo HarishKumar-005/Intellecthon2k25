@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intellecthon 2025 | 12-Hour AI Hackathon | PSVPEC</title>
+    <meta name="description" content="Join Intellecthon 2025 at PSVPEC — a 12-hour national hackathon on Nov 1, 2025. Teams of 3–5 students build AI-powered software solutions across healthcare, agriculture, smart cities, edutech and more. Free registration.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --college-blue: #182353;
+            --college-gold: #fdb913;
+            --light-bg: #f1f2f6;
+            --dark-text: #333333;
+            --light-text: #e0e0e0;
+        }
+        html {
+            scroll-padding-top: 80px;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+        }
+        .hero-bg {
+            position: relative;
+            background-color: var(--college-blue);
+            color: var(--light-text);
+            overflow: hidden;
+        }
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .dark-section {
+            background-color: var(--college-blue);
+            color: var(--light-text);
+        }
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .card:hover {
+             transform: translateY(-8px) scale(1.02);
+             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        }
+        .track-card, .hero-stat-card {
+             position: relative;
+             overflow: hidden;
+             background-color: #2d3748;
+             border: 2px solid transparent;
+             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .hero-stat-card {
+             background: rgba(255, 255, 255, 0.05);
+             backdrop-filter: blur(10px);
+        }
+        .track-card-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.4s ease;
+        }
+        .track-card:hover .track-card-bg {
+            transform: scale(1.05);
+        }
+        .track-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 20%, rgba(15, 23, 42, 0.2) 100%);
+            z-index: 1;
+        }
+        .track-card-content, .hero-stat-card-content {
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+        .track-card:hover, .hero-stat-card:hover {
+            border-color: var(--college-gold);
+            box-shadow: 0 0 20px rgba(253, 185, 19, 0.3);
+        }
+         .track-card:hover .track-card-content, .hero-stat-card:hover .hero-stat-card-content {
+            transform: translateY(-5px);
+        }
+
+        .btn-gold {
+            background-color: var(--college-gold);
+            color: var(--college-blue);
+            font-weight: 700;
+            box-shadow: 0 4px 14px rgba(253, 185, 19, 0.3);
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 25px rgba(253, 185, 19, 0.5);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px) scale(0.98);
+            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #d1d5db;
+        }
+        .dark-section .timeline::before {
+            background-color: rgba(255,255,255,0.2);
+        }
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 60px;
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 60px;
+            text-align: left;
+        }
+        .timeline-dot {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--college-gold);
+            border: 4px solid var(--college-blue);
+            box-shadow: 0 0 10px var(--college-gold);
+            z-index: 10;
+        }
+        .dark-section .timeline-dot {
+            border-color: #f1f2f6;
+        }
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+            transform: translateX(50%);
+        }
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+            transform: translateX(-50%);
+        }
+        @media (max-width: 768px) {
+            .timeline::before { left: 10px; }
+            .timeline-item { width: 100%; padding-left: 50px; padding-right: 20px; text-align: left; }
+            .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { left: 0; padding-right: 20px; text-align: left; }
+            .timeline-item:nth-child(odd) .timeline-dot, .timeline-item:nth-child(even) .timeline-dot { left: 0; }
+        }
+        .section-title {
+            color: var(--college-blue);
+            font-weight: 900;
+        }
+        .dark-section .section-title {
+            color: #ffffff;
+        }
+        .organizer-highlight {
+            border: 2px solid var(--college-gold);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(253, 185, 19, 0.1));
+        }
+        .about-icon {
+            font-size: 48px;
+            color: var(--college-gold);
+            margin-bottom: 1rem;
+        }
+        .faq-item summary::-webkit-details-marker {
+          display: none;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-4">
+                <img src="./images/Prince-header-logo.jpg" alt="PSVPEC College Logo" class="h-12">
+                <img src="./images/Intellecthon-logo.jpg" alt="INTELLECTHON Logo" class="h-10">
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-200 hover:text-yellow-400 transition">About</a>
+                <a href="#tracks" class="text-gray-200 hover:text-yellow-400 transition">Tracks</a>
+                <a href="#timeline" class="text-gray-200 hover:text-yellow-400 transition">Timeline</a>
+                <a href="#rules" class="text-gray-200 hover:text-yellow-400 transition">Rules</a>
+                <a href="#contact" class="text-gray-200 hover:text-yellow-400 transition">Contact</a>
+            </nav>
+            <a href="#register" class="hidden md:block btn-gold py-2 px-6 rounded-full">Register Free</a>
+             <button id="mobile-menu-btn" class="md:hidden text-white text-3xl focus:outline-none">☰</button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-opacity-95 backdrop-blur-sm" style="background-color: #182353e6;">
+             <a href="#about" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">About</a>
+             <a href="#tracks" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Tracks</a>
+             <a href="#timeline" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Timeline</a>
+             <a href="#rules" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Rules</a>
+             <a href="#contact" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Contact</a>
+             <a href="#register" class="block text-center py-4 text-yellow-400 font-bold">Register Free</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg min-h-screen flex items-center justify-center pt-24 pb-12">
+            <canvas id="particle-canvas"></canvas>
+            <div class="hero-content text-center px-4">
+                <h1 class="text-5xl md:text-8xl font-black uppercase tracking-wider">
+                    INTELLECTHON <span style="color: var(--college-gold);">2025</span>
+                </h1>
+                <p class="text-xl md:text-2xl font-light text-gray-300 mt-4 max-w-4xl mx-auto">
+                    A 12-Hour National Hackathon for <span class="font-bold" style="color: var(--college-gold);">AI-Powered Software Solutions</span>
+                </p>
+                 <p class="text-lg md:text-xl font-semibold text-white mt-2">Innovate | Impact | Inspire</p>
+
+                <div class="mt-8 text-white text-2xl md:text-5xl font-bold flex justify-center items-center space-x-2 md:space-x-6" id="countdown">
+                    <div><span id="days">00</span><p class="text-sm font-normal opacity-70">Days</p></div>
+                    <div style="color: var(--college-gold);">:</div>
+                    <div><span id="hours">00</span><p class="text-sm font-normal opacity-70">Hours</p></div>
+                    <div style="color: var(--college-gold);">:</div>
+                    <div><span id="minutes">00</span><p class="text-sm font-normal opacity-70">Minutes</p></div>
+                    <div style="color: var(--college-gold);">:</div>
+                    <div><span id="seconds">00</span><p class="text-sm font-normal opacity-70">Seconds</p></div>
+                </div>
+                <div class="mt-12">
+                    <a href="#register" class="btn-gold py-4 px-10 rounded-full text-lg">
+                        Register Free — Submit your PPT
+                    </a>
+                </div>
+                 <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div class="hero-stat-card p-4 rounded-xl text-center">
+                        <div class="hero-stat-card-content">
+                            <p class="text-3xl font-bold" style="color: var(--college-gold);">Nov 1st 2025</p>
+                            <p class="text-gray-300">Event Date</p>
+                        </div>
+                    </div>
+                    <div class="hero-stat-card p-4 rounded-xl text-center">
+                        <div class="hero-stat-card-content">
+                            <p class="text-3xl font-bold" style="color: var(--college-gold);">₹1,00,000</p>
+                            <p class="text-gray-300">Prize Pool</p>
+                        </div>
+                    </div>
+                    <div class="hero-stat-card p-4 rounded-xl text-center">
+                        <div class="hero-stat-card-content">
+                            <p class="text-3xl font-bold" style="color: var(--college-gold);">PSVPEC Campus</p>
+                            <p class="text-gray-300">Venue</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl section-title scroll-reveal">Welcome to the Arena of Innovation</h2>
+                    <p class="text-gray-600 mt-2 max-w-3xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Intellecthon 2025 is more than a competition. It's a 12-hour marathon where the brightest minds converge to ideate, build, and deploy the future with AI.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 mb-12 text-center">
+                    <div class="card p-8 rounded-lg scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="flex justify-center items-center mb-4">
+                           <i class="fas fa-lightbulb about-icon"></i>
+                        </div>
+                        <p class="text-xl font-bold mb-2" style="color: var(--college-blue);">12-Hour AI Marathon</p>
+                        <p class="text-gray-600">A high-intensity national hackathon focused on creating impactful, AI-powered software solutions.</p>
+                    </div>
+                    <div class="card p-8 rounded-lg scroll-reveal" style="transition-delay: 0.3s;">
+                        <div class="flex justify-center items-center mb-4">
+                           <i class="fas fa-users about-icon"></i>
+                        </div>
+                        <p class="text-xl font-bold mb-2" style="color: var(--college-blue);">UG & PG Students</p>
+                        <p class="text-gray-600">Open to all innovators, developers, and problem-solvers in teams of 3-5.</p>
+                    </div>
+                    <div class="card p-8 rounded-lg scroll-reveal" style="transition-delay: 0.4s;">
+                        <div class="flex justify-center items-center mb-4">
+                           <i class="fas fa-trophy about-icon"></i>
+                        </div>
+                        <p class="text-xl font-bold mb-2" style="color: var(--college-blue);">₹1,00,000 Prize Pool</p>
+                        <p class="text-gray-600">Build a functional prototype, pitch to experts, and compete for massive prizes and recognition.</p>
+                    </div>
+                </div>
+                <div class="text-center scroll-reveal" style="transition-delay: 0.5s;">
+                    <div class="inline-block p-6 rounded-lg organizer-highlight">
+                         <p class="text-lg font-semibold text-gray-700">Proudly Organized By the</p>
+                         <p class="text-2xl font-bold" style="color: var(--college-blue);">Department of Computer Science & Engineering and Information Technology</p>
+                         <p class="font-semibold text-gray-600">Prince Shri Venkateshwara Padmavathy Engineering College</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tracks Section -->
+        <section id="tracks" class="py-20 px-6 dark-section">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl section-title scroll-reveal">Innovation Tracks</h2>
+                    <p class="text-gray-400 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Channel your creativity into building AI-powered solutions for one of these key areas. Participants are free to choose any problem statement within these themes.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="track-card-bg" style="background-image: url(./images/healthcare.jpg);"></div>
+                        <div class="track-card-content flex flex-col justify-end h-full">
+                            <h3 class="text-xl font-semibold text-white">Health Care <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
+                            <p class="text-gray-300 mt-2">AI in diagnostics, patient care, and medical technology.</p>
+                        </div>
+                    </div>
+                     <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.3s;">
+                        <div class="track-card-bg" style="background-image: url(./images/agriculture.jpeg);"></div>
+                        <div class="track-card-content flex flex-col justify-end h-full">
+                            <h3 class="text-xl font-semibold text-white">Agriculture <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
+                            <p class="text-gray-300 mt-2">AI for smart farming, crop management, and sustainability.</p>
+                        </div>
+                    </div>
+                     <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.4s;">
+                        <div class="track-card-bg" style="background-image: url(./images/studentinnovation.webp);"></div>
+                        <div class="track-card-content flex flex-col justify-end h-full">
+                           <h3 class="text-xl font-semibold text-white">Student Innovation <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
+                           <p class="text-gray-300 mt-2">Open track for any groundbreaking AI-powered idea.</p>
+                        </div>
+                    </div>
+                     <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.5s;">
+                        <div class="track-card-bg" style="background-image: url(./images/smartcity.webp);"></div>
+                        <div class="track-card-content flex flex-col justify-end h-full">
+                            <h3 class="text-xl font-semibold text-white">Smart Cities & Urban Mobility <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
+                            <p class="text-gray-300 mt-2">AI to improve urban life, from traffic flow to public services.</p>
+                        </div>
+                    </div>
+                     <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.6s;">
+                        <div class="track-card-bg" style="background-image: url(./images/edutech.png);"></div>
+                        <div class="track-card-content flex flex-col justify-end h-full">
+                            <h3 class="text-xl font-semibold text-white">Education & EduTech <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
+                            <p class="text-gray-300 mt-2">AI in learning, teaching tools, and access to education.</p>
+                        </div>
+                    </div>
+                     <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.7s;">
+                        <div class="track-card-bg" style="background-image: url(./images/safety.jpg);"></div>
+                        <div class="track-card-content flex flex-col justify-end h-full">
+                            <h3 class="text-xl font-semibold text-white">Safety, Protection & Reliability <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
+                            <p class="text-gray-300 mt-2">AI solutions for personal, public, and cybersecurity challenges.</p>
+                        </div>
+                    </div>
+                     <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.8s;">
+                        <div class="track-card-bg" style="background-image: url(./images/renewableenergy.jpeg);"></div>
+                        <div class="track-card-content flex flex-col justify-end h-full">
+                            <h3 class="text-xl font-semibold text-white">Renewable & Sustainable Energy <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
+                            <p class="text-gray-300 mt-2">AI in sustainable energy generation, storage, and efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="py-20 px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl section-title scroll-reveal">Important Dates</h2>
+                    <p class="text-gray-600 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Mark your calendar! Here are the key dates for Intellecthon 2025.</p>
+                </div>
+                <div class="relative timeline">
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">27 Sep 2025</h3><p class="font-semibold text-lg" style="color: var(--college-blue);">Registration Opens</p><p class="text-gray-600">The portal is live! Assemble your team and prepare your idea.</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">13 Oct 2025</h3><p class="font-semibold text-lg" style="color: var(--college-blue);">Registration with PPT Closes</p><p class="text-gray-600">Final day to submit your team details and presentation.</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">22 Oct 2025</h3><p class="font-semibold text-lg" style="color: var(--college-blue);">Shortlisted Teams Announced</p><p class="text-gray-600">Results are out! Check your email and our channels.</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">01 Nov 2025</h3><p class="font-semibold text-lg" style="color: var(--college-blue);">Event Day!</p><p class="text-gray-600">The 12-hour innovation marathon begins at PSVPEC Campus.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prizes Section -->
+        <section id="prizes" class="py-20 px-6 dark-section">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl section-title scroll-reveal">Prizes & Recognition</h2>
+                <p class="text-gray-400 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Compete for a massive prize pool and earn recognition for your talent!</p>
+                <div class="mt-12 scroll-reveal" style="transition-delay: 0.2s;">
+                    <div class="inline-block p-8 rounded-2xl border-2" style="border-color: var(--college-gold); background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);">
+                        <p class="text-lg text-gray-300">Total Prize Pool</p>
+                        <p class="text-6xl font-black text-white my-2" style="text-shadow: 0 0 15px var(--college-gold);">₹1,00,000</p>
+                        <p class="text-gray-400">Prize breakdown to be announced soon!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Section -->
+        <section id="register" class="py-20 px-6">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl section-title scroll-reveal">How to Register</h2>
+                <p class="text-gray-600 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Registration is free. Follow these simple steps to join the hackathon.</p>
+                <div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-12">
+                    <div class="scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="bg-white p-4 rounded-lg shadow-xl">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://forms.gle/64ytiJdd8ru9C1dKA" alt="Registration QR Code">
+                        </div>
+                        <p class="font-bold mt-4" style="color: var(--college-blue);">Scan to Register Your Team</p>
+                    </div>
+                    <div class="text-left scroll-reveal max-w-md" style="transition-delay: 0.3s;">
+                        <div class="flex items-start gap-4 mb-6">
+                            <div class="flex-shrink-0 text-3xl font-bold" style="color: var(--college-gold);">1.</div>
+                            <div>
+                                <h3 class="text-xl font-bold" style="color: var(--college-blue);">Complete the Form</h3>
+                                <p class="text-gray-600">Fill out the official registration form with your team and project details.</p>
+                                <a href="https://forms.gle/64ytiJdd8ru9C1dKA" target="_blank" class="text-yellow-500 font-semibold hover:underline">Go to Registration Form &rarr;</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 mb-6">
+                            <div class="flex-shrink-0 text-3xl font-bold" style="color: var(--college-gold);">2.</div>
+                            <div>
+                                <h3 class="text-xl font-bold" style="color: var(--college-blue);">Upload Your PPT</h3>
+                                <p class="text-gray-600">A presentation is mandatory for registration. Use our official template.</p>
+                                <a href="#" class="text-yellow-500 font-semibold hover:underline">Download PPT Template &rarr;</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 text-3xl font-bold" style="color: var(--college-gold);">3.</div>
+                            <div>
+                                <h3 class="text-xl font-bold" style="color: var(--college-blue);">Join WhatsApp Group</h3>
+                                <p class="text-gray-600">Stay updated with all announcements and communications.</p>
+                                <a href="https://chat.whatsapp.com/KqUaYPsuqagDcRixHXKs2k?mode=ems_copy_c" target="_blank" class="text-yellow-500 font-semibold hover:underline">Join WhatsApp Group &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- Rules Section -->
+        <section id="rules" class="py-20 px-6 dark-section">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl section-title scroll-reveal">Rules & Guidelines</h2>
+                     <p class="text-gray-400 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Please read the following rules carefully to ensure a smooth and fair competition.</p>
+                </div>
+                <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                    <div class="p-6 rounded-lg scroll-reveal" style="transition-delay: 0.2s; background: rgba(255, 255, 255, 0.05);">
+                        <h3 class="text-xl font-bold mb-2 text-white">Eligibility & Teams</h3>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li>Open to UG & PG students from all colleges.</li>
+                            <li>Team size must be <strong>3 to 5 members</strong>.</li>
+                            <li>All team members must belong to the same college (inter-departmental teams are welcome).</li>
+                        </ul>
+                    </div>
+                     <div class="p-6 rounded-lg scroll-reveal" style="transition-delay: 0.3s; background: rgba(255, 255, 255, 0.05);">
+                        <h3 class="text-xl font-bold mb-2 text-white">Event Day</h3>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li>Participants must attend in <strong>formal attire</strong>.</li>
+                            <li>Bring your own necessary resources (laptops, chargers, software, datasets, models, APIs, etc.).</li>
+                            <li>Food and refreshments will be provided free of charge.</li>
+                        </ul>
+                    </div>
+                     <div class="p-6 rounded-lg md:col-span-2 scroll-reveal" style="transition-delay: 0.4s; background: rgba(255, 255, 255, 0.05);">
+                        <h3 class="text-xl font-bold mb-2 text-white">Judging & Fair Play (Tentative)</h3>
+                         <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li><strong>Judging Criteria:</strong> Novelty/Innovation (30%), Technical Implementation (30%), Impact & Feasibility (20%), UX & Design (10%), Presentation & Q&A (10%).</li>
+                             <li>All work must be original and created during the 12-hour event. Pre-existing code or projects are not allowed.</li>
+                             <li>Plagiarism or any form of academic dishonesty will result in immediate disqualification.</li>
+                             <li>Teams retain full ownership (IP) of what they build.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Resources -->
+        <section id="resources" class="py-20 px-6">
+             <div class="container mx-auto">
+                <div class="text-center mb-12">
+                     <h2 class="text-4xl section-title scroll-reveal">Resources & Venue</h2>
+                     <p class="text-gray-600 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Everything you need to get started and find your way.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="p-8 rounded-lg scroll-reveal" style="transition-delay: 0.2s;">
+                         <h3 class="text-2xl font-bold text-gray-800 mb-4">Downloads & Links</h3>
+                         <div class="space-y-4">
+                             <a href="#" class="flex items-center justify-between p-4 bg-white rounded-lg shadow hover:shadow-lg transition">
+                                 <span class="font-semibold" style="color: var(--college-blue);">PPT Template</span>
+                                 <span style="color: var(--college-gold);">Download &rarr;</span>
+                             </a>
+                         </div>
+                    </div>
+                    <div class="rounded-lg overflow-hidden scroll-reveal" style="transition-delay: 0.3s;">
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.8795175588957!2d80.1684385745448!3d12.851057517510652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52597621e12c79%3A0x749fd8e5d110fae8!2sPrince%20Shri%20Venkateshwara%20Padmavathy%20Engineering%20College!5e0!3m2!1sen!2sin!4v1758821755831!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="min-h-[250px] rounded-lg shadow-lg"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section id="schedule" class="py-20 px-6 dark-section">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl section-title scroll-reveal">Tentative Event Day Schedule</h2>
+                    <p class="text-gray-400 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Here’s how the 12-hour marathon will unfold.</p>
+                </div>
+                <div class="relative timeline">
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">08:00 - 09:00</h3><p class="font-semibold text-lg text-white">Registration & Breakfast</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">09:00 - 09:30</h3><p class="font-semibold text-lg text-white">Opening Ceremony & Briefing</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">09:30</h3><p class="font-semibold text-lg text-white">Hacking Begins!</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">09:45 - 17:30</h3><p class="font-semibold text-lg text-white">Hacking & Mentorship Sessions</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">17:30 - 18:30</h3><p class="font-semibold text-lg text-white">Finalize Prototype & Demo Prep</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">18:30 - 19:30</h3><p class="font-semibold text-lg text-white">Team Demos & Presentations</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">19:30 - 20:00</h3><p class="font-semibold text-lg text-white">Awards & Closing Ceremony</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 px-6">
+            <div class="container mx-auto max-w-4xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl section-title scroll-reveal">Frequently Asked Questions</h2>
+                </div>
+                <div class="space-y-4">
+                    <details class="faq-item bg-white p-6 rounded-lg shadow-md scroll-reveal" style="transition-delay: 0.1s;">
+                        <summary class="font-semibold text-lg cursor-pointer" style="color: var(--college-blue);">Who can participate?</summary>
+                        <p class="text-gray-600 mt-4">UG and PG students from any college. Teams (3–5 members) must belong to the same college; inter-department teams are allowed.</p>
+                    </details>
+                    <details class="faq-item bg-white p-6 rounded-lg shadow-md scroll-reveal" style="transition-delay: 0.2s;">
+                        <summary class="font-semibold text-lg cursor-pointer" style="color: var(--college-blue);">Is registration free?</summary>
+                        <p class="text-gray-600 mt-4">Yes, registration is completely free for all participants.</p>
+                    </details>
+                    <details class="faq-item bg-white p-6 rounded-lg shadow-md scroll-reveal" style="transition-delay: 0.3s;">
+                        <summary class="font-semibold text-lg cursor-pointer" style="color: var(--college-blue);">What do we need to upload at registration?</summary>
+                        <p class="text-gray-600 mt-4">You need to submit your team details and a PPT outlining your project idea (please use the official PPT template). Registration with PPT must be completed by 13-Oct-2025.</p>
+                    </details>
+                     <details class="faq-item bg-white p-6 rounded-lg shadow-md scroll-reveal" style="transition-delay: 0.4s;">
+                        <summary class="font-semibold text-lg cursor-pointer" style="color: var(--college-blue);">Is internet/access to cloud provided?</summary>
+                        <p class="text-gray-600 mt-4">Yes, internet access will be provided at the venue. Any specific cloud credit details will be shared closer to the event date.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 px-6 dark-section">
+             <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl section-title scroll-reveal">Get In Touch</h2>
+                     <p class="text-gray-400 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Have more questions? Reach out to us through the coordinator or the contact form below.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="scroll-reveal text-center md:text-left" style="transition-delay: 0.2s;">
+                         <h3 class="text-2xl font-bold mb-4 text-white">Event Coordinator</h3>
+                         <div class="inline-block p-8 rounded-lg text-center" style="background: rgba(255, 255, 255, 0.05);">
+                            <p class="text-xl font-semibold text-white">Dr. M. Preetha</p>
+                            <a href="tel:9443839811" class="text-2xl font-bold mt-2 block hover:underline" style="color: var(--college-gold);">📞 94438 39811</a>
+                         </div>
+                    </div>
+                    <div class="scroll-reveal" style="transition-delay: 0.3s;">
+                        <form action="https://api.web3forms.com/submit" method="POST" class="p-8 rounded-lg space-y-4" style="background: rgba(255, 255, 255, 0.05);">
+                            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                             <div>
+                                 <label for="name" class="font-semibold text-gray-200">Name</label>
+                                 <input type="text" id="name" name="name" class="w-full mt-1 p-2 border border-gray-500 rounded-md bg-gray-700 text-white focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400" required>
+                             </div>
+                             <div>
+                                 <label for="email" class="font-semibold text-gray-200">Email</label>
+                                 <input type="email" id="email" name="email" class="w-full mt-1 p-2 border border-gray-500 rounded-md bg-gray-700 text-white focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400" required>
+                             </div>
+                             <div>
+                                 <label for="message" class="font-semibold text-gray-200">Message</label>
+                                 <textarea id="message" name="message" rows="4" class="w-full mt-1 p-2 border border-gray-500 rounded-md bg-gray-700 text-white focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400" required></textarea>
+                             </div>
+                             <button type="submit" class="w-full btn-gold py-3 rounded-md">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 text-white" style="background-color: var(--college-blue);">
+        <div class="container mx-auto text-center text-gray-300">
+             <img src="./images/Prince-footer-Logo.png" alt="PSVPEC College Logo" class="h-20 mx-auto mb-4">
+            <p class="font-bold text-lg">Prince Shri Venkateshwara Padmavathy Engineering College</p>
+            <p>An Autonomous Institution, Ponmar, Chennai - 127</p>
+            <p class="mt-2">Organized by the Department of CSE & IT</p>
+            <p class="mt-6 text-sm">&copy; 2025 INTELLECTHON. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Particle JS for Hero Background
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            let particlesArray;
+
+            const mouse = {
+                x: null,
+                y: null,
+                radius: (canvas.height/100) * (canvas.width/100)
+            };
+
+            window.addEventListener('mousemove', 
+                function(event) {
+                    mouse.x = event.x;
+                    mouse.y = event.y;
+                }
+            );
+
+            class Particle {
+                constructor(x, y, directionX, directionY, size, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.directionX = directionX;
+                    this.directionY = directionY;
+                    this.size = size;
+                    this.color = color;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                    ctx.fillStyle = 'rgba(253, 185, 19, 0.5)';
+                    ctx.fill();
+                }
+                update() {
+                    if (this.x > canvas.width || this.x < 0) {
+                        this.directionX = -this.directionX;
+                    }
+                    if (this.y > canvas.height || this.y < 0) {
+                        this.directionY = -this.directionY;
+                    }
+                    // Mouse collision detection
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius + this.size) {
+                        if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
+                            this.x += 3;
+                        }
+                        if (mouse.x > this.x && this.x > this.size * 10) {
+                            this.x -= 3;
+                        }
+                        if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
+                            this.y += 3;
+                        }
+                        if (mouse.y > this.y && this.y > this.size * 10) {
+                            this.y -= 3;
+                        }
+                    }
+                    this.x += this.directionX;
+                    this.y += this.directionY;
+                    this.draw();
+                }
+            }
+            
+            function init() {
+                particlesArray = [];
+                let numberOfParticles = (canvas.height * canvas.width) / 9000;
+                for (let i = 0; i < numberOfParticles; i++) {
+                    let size = (Math.random() * 2) + 1;
+                    let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                    let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                    let directionX = (Math.random() * .4) - 0.2;
+                    let directionY = (Math.random() * .4) - 0.2;
+                    particlesArray.push(new Particle(x, y, directionX, directionY, size));
+                }
+            }
+
+            function connect() {
+                let opacityValue = 1;
+                for (let a = 0; a < particlesArray.length; a++) {
+                    for (let b = a; b < particlesArray.length; b++) {
+                        let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                        + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                        if (distance < (canvas.width/7) * (canvas.height/7)) {
+                            opacityValue = 1 - (distance/20000);
+                            ctx.strokeStyle = 'rgba(253, 185, 19,' + opacityValue + ')';
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                ctx.clearRect(0,0,innerWidth, innerHeight);
+
+                for (const element of particlesArray) {
+                    element.update();
+                }
+                connect();
+            }
+
+            window.addEventListener('resize', 
+                function(){
+                    canvas.width = innerWidth;
+                    canvas.height = innerHeight;
+                    init();
+                }
+            );
+            
+            init();
+            animate();
+            
+            // Countdown Timer
+            const countdownDate = new Date("Nov 1, 2025 08:00:00").getTime();
+
+            const timer = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("countdown").innerHTML = "<div class='text-4xl'>The Event has Started!</div>";
+                }
+            }, 1000);
+
+            // Scroll Animations
+            const scrollElements = document.querySelectorAll(".scroll-reveal");
+
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+
+            const displayScrollElement = (element) => {
+                element.classList.add("visible");
+            };
+
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", handleScrollAnimation);
+            handleScrollAnimation(); 
+
+            // Header background on scroll
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.style.backgroundColor = 'rgba(24, 35, 83, 0.9)';
+                    header.style.backdropFilter = 'blur(10px)';
+                    header.classList.add('shadow-lg');
+                } else {
+                    header.style.backgroundColor = 'transparent';
+                    header.style.backdropFilter = 'none';
+                    header.classList.remove('shadow-lg');
+                }
+            });
+            
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('#mobile-menu a, header nav a');
+
+            const closeMenu = () => mobileMenu.classList.add('hidden');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    closeMenu();
+                    const targetId = e.currentTarget.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                item.addEventListener('toggle', (event) => {
+                    if (event.target.open) {
+                        faqItems.forEach(otherItem => {
+                            if (otherItem !== event.target) {
+                                otherItem.open = false;
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
