@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intellecthon 2025 | 12-Hour AI Hackathon | PSVPEC</title>
-    <meta name="description" content="Join Intellecthon 2025 at PSVPEC — a 12-hour national hackathon on Nov 1, 2025. Teams of 3–5 students build AI-powered software solutions across healthcare, agriculture, smart cities, edutech and more. Free registration.">
+    <title>Intellecthon 2025 | 12-Hour Innovation Hackathon | Prince Shri Venkateshwara Padmavathy Engineering College</title>
+    <meta name="description" content="Join Intellecthon 2025 at Prince Shri Venkateshwara Padmavathy Engineering College — a 12-hour national hackathon on Nov 1, 2025. Teams of 3–5 students build innovative software solutions to real-world problems. Free registration.">
     <!-- Chosen Palette: "Prestige" - A dual-tone theme balancing a professional, light-gray background for clarity with a deep navy blue for impact, accented by a vibrant golden-yellow. -->
     <!-- Application Structure Plan: A single-page, top-to-bottom scrolling narrative. Starts with a high-impact hero section with an interactive, dynamic background, stat cards, and countdown timer. Flows logically through branded sections: 'About', 'Tracks', 'Timeline', 'Prizes', 'Register', 'Rules', 'Resources', 'Schedule', 'Contact', and a 'FAQ' section. Fully responsive design implemented. -->
     <!-- Visualization & Content Choices: Event Info -> Goal: Inform & Excite -> Viz/Presentation: JS countdown timer and hero stat cards. Tracks -> Goal: Organize & Engage -> Viz: Thematic background images with gradient overlays and interactive hover effects. About section uses polished Font Awesome icons with key data highlights. Timeline & Schedule -> Goal: Clarify Flow -> Viz: A vertical CSS/HTML timeline. Prizes -> Goal: Excite -> Viz: A tiered "Winner's Podium" layout. FAQ -> Goal: Inform -> Viz: An interactive accordion. Hero section uses a mouse-interactive canvas animation for a high-tech feel. NO SVG/Mermaid used. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Exo+2:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         :root {
@@ -27,6 +27,9 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--light-bg);
             color: var(--dark-text);
+        }
+        .font-brand {
+            font-family: 'Exo 2', sans-serif;
         }
         .hero-bg {
             position: relative;
@@ -68,8 +71,13 @@
              transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         .hero-stat-card {
-             background: rgba(255, 255, 255, 0.05);
-             backdrop-filter: blur(10px);
+             background: rgba(255, 255, 255, 0.08);
+             backdrop-filter: blur(12px);
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+             padding: 1rem;
         }
         .track-card-bg {
             position: absolute;
@@ -206,27 +214,27 @@
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
             <a href="#" class="flex items-center gap-2 sm:gap-4">
-                <img src="images/Prince-header-logo.jpg" alt="PSVPEC College Logo" class="h-10 sm:h-12">
-                <img src="images/Intellecthon-logo.jpg" alt="INTELLECTHON Logo" class="h-8 sm:h-10">
+                <img src="images/Prince-header-logo.png" alt="Prince Shri Venkateshwara Padmavathy Engineering College Logo" class="h-12 sm:h-14">
+                <img src="images/Intellecthon-logo.png" alt="INTELLECTHON Logo" class="h-10 sm:h-12">
             </a>
             <nav class="hidden md:flex space-x-8">
-                <a href="#about" class="text-gray-200 hover:text-yellow-400 transition">About</a>
-                <a href="#tracks" class="text-gray-200 hover:text-yellow-400 transition">Tracks</a>
-                <a href="#timeline" class="text-gray-200 hover:text-yellow-400 transition">Timeline</a>
-                <a href="#rules" class="text-gray-200 hover:text-yellow-400 transition">Rules</a>
-                <a href="#contact" class="text-gray-200 hover:text-yellow-400 transition">Contact</a>
+                <a href="#about" class="text-gray-200 hover:text-yellow-400 transition">About the Event</a>
+                <a href="#tracks" class="text-gray-200 hover:text-yellow-400 transition">Innovation Tracks</a>
+                <a href="#timeline" class="text-gray-200 hover:text-yellow-400 transition">Key Dates</a>
+                <a href="#rules" class="text-gray-200 hover:text-yellow-400 transition">Rules & Guidelines</a>
+                <a href="#contact" class="text-gray-200 hover:text-yellow-400 transition">Contact Us</a>
             </nav>
-            <a href="#register" class="hidden md:block btn-gold py-2 px-6 rounded-full">Register Now</a>
+            <a href="#register" class="hidden md:block btn-gold py-2 px-6 rounded-full">Register Free</a>
              <button id="mobile-menu-btn" class="md:hidden text-white text-3xl focus:outline-none">☰</button>
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-opacity-95 backdrop-blur-sm" style="background-color: #182353e6;">
-             <a href="#about" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">About</a>
-             <a href="#tracks" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Tracks</a>
-             <a href="#timeline" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Timeline</a>
-             <a href="#rules" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Rules</a>
-             <a href="#contact" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Contact</a>
-             <a href="#register" class="block text-center py-4 text-yellow-400 font-bold">Register Now</a>
+             <a href="#about" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">About the Event</a>
+             <a href="#tracks" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Innovation Tracks</a>
+             <a href="#timeline" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Key Dates</a>
+             <a href="#rules" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Rules & Guidelines</a>
+             <a href="#contact" class="block text-center py-3 text-gray-200 hover:text-yellow-400 transition">Contact Us</a>
+             <a href="#register" class="block text-center py-4 text-yellow-400 font-bold">Register Free</a>
         </div>
     </header>
 
@@ -235,13 +243,13 @@
         <section class="hero-bg min-h-screen flex items-center justify-center pt-24 pb-12">
             <canvas id="particle-canvas"></canvas>
             <div class="hero-content text-center px-4">
-                <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-wider">
+                <h1 class="font-brand text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-wider">
                     INTELLECTHON <span style="color: var(--college-gold);">2025</span>
                 </h1>
                 <p class="text-lg sm:text-xl md:text-2xl font-light text-gray-300 mt-4 max-w-4xl mx-auto">
-                    A 12-Hour National Hackathon for <span class="font-bold" style="color: var(--college-gold);">AI-Powered Software Solutions</span>
+                    The Ultimate 12-Hour Sprint of Pure Innovation
                 </p>
-                 <p class="text-base sm:text-lg md:text-xl font-semibold text-white mt-2">Innovate | Impact | Inspire</p>
+                 <p class="text-base sm:text-lg md:text-xl font-semibold text-white mt-2">💫 Innovate | ☄️ Impact | 🚀 Inspire</p>
 
                 <div class="mt-8 text-white text-2xl md:text-5xl font-bold flex justify-center items-center space-x-2 md:space-x-6" id="countdown">
                     <div><span id="days">00</span><p class="text-xs sm:text-sm font-normal opacity-70">Days</p></div>
@@ -253,27 +261,27 @@
                     <div><span id="seconds">00</span><p class="text-xs sm:text-sm font-normal opacity-70">Seconds</p></div>
                 </div>
                 <div class="mt-12">
-                    <a href="#register" class="btn-gold py-4 px-10 rounded-full text-lg">
-                        Rise to the Challenge 🚀
+                    <a href="#register" class="btn-gold py-4 px-10 rounded-full text-lg group">
+                       <span class="group-hover:text-white transition-colors duration-300">Register for Free 🚀 Rise to the Challenge</span> 
                     </a>
                 </div>
                  <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                    <div class="hero-stat-card p-4 rounded-xl text-center">
+                    <div class="hero-stat-card rounded-xl">
                         <div class="hero-stat-card-content">
-                            <p class="text-2xl sm:text-3xl font-bold" style="color: var(--college-gold);">Nov 1st 2025</p>
-                            <p class="text-sm text-gray-300">Event Date</p>
+                            <p class="text-2xl sm:text-3xl font-bold" style="color: var(--college-gold);">November 1st, 2025</p>
+                            <p class="text-sm text-gray-300 mt-2">Event Date</p>
                         </div>
                     </div>
-                    <div class="hero-stat-card p-4 rounded-xl text-center">
+                    <div class="hero-stat-card rounded-xl">
                         <div class="hero-stat-card-content">
                             <p class="text-2xl sm:text-3xl font-bold" style="color: var(--college-gold);">₹1,00,000</p>
-                            <p class="text-sm text-gray-300">Prize Pool</p>
+                            <p class="text-sm text-gray-300 mt-2">Prize Pool</p>
                         </div>
                     </div>
-                    <div class="hero-stat-card p-4 rounded-xl text-center">
+                    <div class="hero-stat-card rounded-xl">
                         <div class="hero-stat-card-content">
-                            <p class="text-2xl sm:text-3xl font-bold" style="color: var(--college-gold);">PSVPEC Campus</p>
-                            <p class="text-sm text-gray-300">Venue</p>
+                            <p class="text-xl sm:text-2xl font-bold leading-tight" style="color: var(--college-gold);">Prince Shri Venkateshwara Padmavathy Engineering College Campus</p>
+                            <p class="text-sm text-gray-300 mt-2">Venue</p>
                         </div>
                     </div>
                 </div>
@@ -285,29 +293,29 @@
             <div class="container mx-auto">
                 <div class="text-center mb-12">
                     <h2 class="text-4xl section-title scroll-reveal">Welcome to the Arena of Innovation</h2>
-                    <p class="text-gray-600 mt-2 max-w-3xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Intellecthon 2025 is more than a competition. It's a 12-hour marathon where the brightest minds converge to ideate, build, and deploy the future with AI.</p>
+                    <p class="text-gray-600 mt-2 max-w-3xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">This isn’t just a competition – it’s a high-octane arena where students from across disciplines ideate, prototype, and showcase breakthrough software solutions to real-world problems.</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-8 mb-12 text-center">
                     <div class="card p-8 rounded-lg scroll-reveal" style="transition-delay: 0.2s;">
                         <div class="flex justify-center items-center mb-4">
-                           <i class="fas fa-lightbulb about-icon"></i>
+                           <i class="fas fa-rocket about-icon"></i>
                         </div>
-                        <p class="text-xl font-bold mb-2" style="color: var(--college-blue);">12-Hour AI Marathon</p>
-                        <p class="text-gray-600">A high-intensity national hackathon focused on creating impactful, AI-powered software solutions.</p>
+                        <p class="text-xl font-bold mb-2" style="color: var(--college-blue);">12 Hours of Pure Innovation</p>
+                        <p class="text-gray-600">Push your creativity and problem-solving skills to the max in a dynamic, time-bound challenge.</p>
                     </div>
                     <div class="card p-8 rounded-lg scroll-reveal" style="transition-delay: 0.3s;">
                         <div class="flex justify-center items-center mb-4">
                            <i class="fas fa-users about-icon"></i>
                         </div>
-                        <p class="text-xl font-bold mb-2" style="color: var(--college-blue);">UG & PG Students</p>
-                        <p class="text-gray-600">Open to all innovators, developers, and problem-solvers in teams of 3-5.</p>
+                        <p class="text-xl font-bold mb-2" style="color: var(--college-blue);">Teamwork that Wins</p>
+                        <p class="text-gray-600">Forge a team of 3-5 innovators. Combine diverse skills to tackle complex challenges and bring your vision to life.</p>
                     </div>
                     <div class="card p-8 rounded-lg scroll-reveal" style="transition-delay: 0.4s;">
                         <div class="flex justify-center items-center mb-4">
                            <i class="fas fa-trophy about-icon"></i>
                         </div>
-                        <p class="text-xl font-bold mb-2" style="color: var(--college-blue);">₹1,00,000 Prize Pool</p>
-                        <p class="text-gray-600">Build a functional prototype, pitch to experts, and compete for massive prizes and recognition.</p>
+                        <p class="text-xl font-bold mb-2" style="color: var(--college-blue);">Prototype to Present</p>
+                        <p class="text-gray-600">Build, pitch, and impress our panel of expert judges to compete for a massive prize pool.</p>
                     </div>
                 </div>
                 <div class="text-center scroll-reveal" style="transition-delay: 0.5s;">
@@ -325,56 +333,56 @@
             <div class="container mx-auto">
                 <div class="text-center mb-12">
                     <h2 class="text-4xl section-title scroll-reveal">Innovation Tracks</h2>
-                    <p class="text-gray-400 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Channel your creativity into building AI-powered solutions for one of these key areas. Participants are free to choose any problem statement within these themes.</p>
+                    <p class="text-gray-400 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Channel your creativity into designing solutions that can make a real-world impact in one of these key areas.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.2s;">
                         <div class="track-card-bg" style="background-image: url('images/healthcare.jpg');"></div>
                         <div class="track-card-content flex flex-col justify-end h-full">
                             <h3 class="text-xl font-semibold text-white">Health Care <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
-                            <p class="text-gray-300 mt-2">AI in diagnostics, patient care, and medical technology.</p>
+                            <p class="text-gray-300 mt-2">Innovations in diagnostics, patient care, and medical technology.</p>
                         </div>
                     </div>
                      <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.3s;">
                         <div class="track-card-bg" style="background-image: url('images/agriculture.jpeg');"></div>
                         <div class="track-card-content flex flex-col justify-end h-full">
                             <h3 class="text-xl font-semibold text-white">Agriculture <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
-                            <p class="text-gray-300 mt-2">AI for smart farming, crop management, and sustainability.</p>
+                            <p class="text-gray-300 mt-2">Solutions for smart farming, crop management, and sustainability.</p>
                         </div>
                     </div>
                      <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.4s;">
                         <div class="track-card-bg" style="background-image: url('images/studentinnovation.webp');"></div>
                         <div class="track-card-content flex flex-col justify-end h-full">
                            <h3 class="text-xl font-semibold text-white">Student Innovation <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
-                           <p class="text-gray-300 mt-2">Open track for any groundbreaking AI-powered idea.</p>
+                           <p class="text-gray-300 mt-2">Open track for any groundbreaking idea.</p>
                         </div>
                     </div>
                      <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.5s;">
                         <div class="track-card-bg" style="background-image: url('images/smartcity.webp');"></div>
                         <div class="track-card-content flex flex-col justify-end h-full">
                             <h3 class="text-xl font-semibold text-white">Smart Cities & Urban Mobility <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
-                            <p class="text-gray-300 mt-2">AI to improve urban life, from traffic flow to public services.</p>
+                            <p class="text-gray-300 mt-2">Tech to improve urban life, from traffic flow to public services.</p>
                         </div>
                     </div>
                      <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.6s;">
                         <div class="track-card-bg" style="background-image: url('images/edutech.png');"></div>
                         <div class="track-card-content flex flex-col justify-end h-full">
                             <h3 class="text-xl font-semibold text-white">Education & EduTech <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
-                            <p class="text-gray-300 mt-2">AI in learning, teaching tools, and access to education.</p>
+                            <p class="text-gray-300 mt-2">Innovations in learning, teaching tools, and access to education.</p>
                         </div>
                     </div>
                      <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.7s;">
                         <div class="track-card-bg" style="background-image: url('images/safety.jpg');"></div>
                         <div class="track-card-content flex flex-col justify-end h-full">
                             <h3 class="text-xl font-semibold text-white">Safety, Protection & Reliability <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
-                            <p class="text-gray-300 mt-2">AI solutions for personal, public, and cybersecurity challenges.</p>
+                            <p class="text-gray-300 mt-2">Innovations in digital and physical security, data protection, and building robust, reliable systems.</p>
                         </div>
                     </div>
                      <div class="track-card group p-6 rounded-xl scroll-reveal" style="transition-delay: 0.8s;">
                         <div class="track-card-bg" style="background-image: url('images/renewableenergy.jpeg');"></div>
                         <div class="track-card-content flex flex-col justify-end h-full">
                             <h3 class="text-xl font-semibold text-white">Renewable & Sustainable Energy <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-1">→</span></h3>
-                            <p class="text-gray-300 mt-2">AI in sustainable energy generation, storage, and efficiency.</p>
+                            <p class="text-gray-300 mt-2">Ideas for sustainable energy generation, storage, and efficiency.</p>
                         </div>
                     </div>
                 </div>
@@ -391,8 +399,8 @@
                 <div class="relative timeline">
                     <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">27 Sep 2025</h3><p class="font-semibold text-lg" style="color: var(--college-blue);">Registration Opens</p><p class="text-gray-600">The portal is live! Assemble your team and prepare your idea.</p></div>
                     <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">13 Oct 2025</h3><p class="font-semibold text-lg" style="color: var(--college-blue);">Registration with PPT Closes</p><p class="text-gray-600">Final day to submit your team details and presentation.</p></div>
-                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">22 Oct 2025</h3><p class="font-semibold text-lg" style="color: var(--college-blue);">Shortlisted Teams Announced</p><p class="text-gray-600">Results are out! Check your email and our channels.</p></div>
-                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">01 Nov 2025</h3><p class="font-semibold text-lg" style="color: var(--college-blue);">Event Day!</p><p class="text-gray-600">The 12-hour innovation marathon begins at PSVPEC Campus.</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">22 Oct 2025</h3><p class="font-semibold text-lg" style="color: var(--college-blue);">Announcement of Shortlisted Teams</p><p class="text-gray-600">Results are out! Check your email and our channels.</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">01 Nov 2025</h3><p class="font-semibold text-lg" style="color: var(--college-blue);">Event Day!</p><p class="text-gray-600">The 12-hour innovation challenge begins at Prince Shri Venkateshwara Padmavathy Engineering College.</p></div>
                 </div>
             </div>
         </section>
@@ -401,12 +409,29 @@
         <section id="prizes" class="py-20 px-6 dark-section">
             <div class="container mx-auto text-center">
                 <h2 class="text-4xl section-title scroll-reveal">Prizes & Recognition</h2>
-                <p class="text-gray-400 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Compete for a massive prize pool and earn recognition for your talent!</p>
-                <div class="mt-12 scroll-reveal" style="transition-delay: 0.2s;">
-                    <div class="inline-block p-8 rounded-2xl border-2" style="border-color: var(--college-gold); background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);">
-                        <p class="text-lg text-gray-300">Total Prize Pool</p>
-                        <p class="text-6xl font-black text-white my-2" style="text-shadow: 0 0 15px var(--college-gold);">₹1,00,000</p>
-                        <p class="text-gray-400">Prize breakdown to be announced soon!</p>
+                <p class="text-gray-400 mt-2 max-w-3xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Compete for a massive prize pool and earn recognition for your talent! Beyond the cash prize, this is a chance to showcase your skills to industry experts.</p>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-end">
+                    <div class="p-6 rounded-lg scroll-reveal" style="transition-delay: 0.3s; background: rgba(255, 255, 255, 0.05);">
+                        <i class="fas fa-medal text-5xl" style="color: #C0C0C0;"></i>
+                        <h3 class="text-2xl font-bold mt-4 text-white">2nd Prize</h3>
+                        <p class="text-4xl font-black mt-2" style="color: #C0C0C0;">₹30,000</p>
+                    </div>
+                    <div class="p-8 rounded-lg scroll-reveal" style="transition-delay: 0.2s; background: rgba(255, 255, 255, 0.1); transform: scale(1.1); border: 2px solid var(--college-gold);">
+                        <i class="fas fa-trophy text-6xl" style="color: #FFD700;"></i>
+                        <h3 class="text-3xl font-bold mt-4 text-white">Winner</h3>
+                        <p class="text-5xl font-black mt-2" style="color: #FFD700;">₹50,000</p>
+                    </div>
+                    <div class="p-6 rounded-lg scroll-reveal" style="transition-delay: 0.4s; background: rgba(255, 255, 255, 0.05);">
+                         <i class="fas fa-award text-5xl" style="color: #CD7F32;"></i>
+                        <h3 class="text-2xl font-bold mt-4 text-white">3rd Prize</h3>
+                        <p class="text-4xl font-black mt-2" style="color: #CD7F32;">₹20,000</p>
+                    </div>
+                </div>
+                 <div class="mt-12 max-w-md mx-auto">
+                     <div class="p-6 rounded-lg scroll-reveal" style="transition-delay: 0.5s; background: rgba(255, 255, 255, 0.05);">
+                        <i class="fas fa-certificate text-4xl" style="color: #a0aec0;"></i>
+                        <h3 class="text-2xl font-bold mt-4 text-white">Certificates</h3>
+                        <p class="text-gray-300 mt-2">For all participants</p>
                     </div>
                 </div>
             </div>
@@ -428,24 +453,24 @@
                         <div class="flex items-start gap-4 mb-6">
                             <div class="flex-shrink-0 text-3xl font-bold" style="color: var(--college-gold);">1.</div>
                             <div>
-                                <h3 class="text-xl font-bold" style="color: var(--college-blue);">Complete the Form</h3>
-                                <p class="text-gray-600">Fill out the official registration form with your team and project details.</p>
-                                <a href="https://forms.gle/64ytiJdd8ru9C1dKA" target="_blank" class="text-yellow-500 font-semibold hover:underline">Go to Registration Form &rarr;</a>
+                                <h3 class="text-xl font-bold" style="color: var(--college-blue);">Prepare Your Idea</h3>
+                                <p class="text-gray-600">Your presentation is the key to your application. Download our official template to get started.</p>
+                                <a href="#" class="text-yellow-500 font-semibold hover:underline">Download PPT Template &rarr;</a>
                             </div>
                         </div>
                         <div class="flex items-start gap-4 mb-6">
                             <div class="flex-shrink-0 text-3xl font-bold" style="color: var(--college-gold);">2.</div>
                             <div>
-                                <h3 class="text-xl font-bold" style="color: var(--college-blue);">Upload Your PPT</h3>
-                                <p class="text-gray-600">A presentation is mandatory for registration. Use our official template.</p>
-                                <a href="#" class="text-yellow-500 font-semibold hover:underline">Download PPT Template &rarr;</a>
+                                <h3 class="text-xl font-bold" style="color: var(--college-blue);">Submit Your Application</h3>
+                                <p class="text-gray-600">Fill out the registration form with your team details and upload your completed presentation.</p>
+                                <a href="https://forms.gle/64ytiJdd8ru9C1dKA" target="_blank" class="text-yellow-500 font-semibold hover:underline">Go to Registration Form &rarr;</a>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
                             <div class="flex-shrink-0 text-3xl font-bold" style="color: var(--college-gold);">3.</div>
                             <div>
-                                <h3 class="text-xl font-bold" style="color: var(--college-blue);">Join WhatsApp Group</h3>
-                                <p class="text-gray-600">Stay updated with all announcements and communications.</p>
+                                <h3 class="text-xl font-bold" style="color: var(--college-blue);">Stay Connected</h3>
+                                <p class="text-gray-600">Join our WhatsApp group to stay updated with all announcements and communications.</p>
                                 <a href="https://chat.whatsapp.com/KqUaYPsuqagDcRixHXKs2k?mode=ems_copy_c" target="_blank" class="text-yellow-500 font-semibold hover:underline">Join WhatsApp Group &rarr;</a>
                             </div>
                         </div>
@@ -474,15 +499,44 @@
                         <h3 class="text-xl font-bold mb-2 text-white">Event Day</h3>
                         <ul class="list-disc list-inside text-gray-300 space-y-2">
                             <li>Participants must attend in <strong>formal attire</strong>.</li>
-                            <li>Bring your own necessary resources (laptops, chargers, software, datasets, models, APIs, etc.).</li>
-                            <li>Food and refreshments will be provided free of charge.</li>
+                            <li>Bring your own necessary resources (laptops, chargers, software, etc.).</li>
+                            <li>Complimentary meals and refreshments will be provided to all participants throughout the event.</li>
                         </ul>
                     </div>
                      <div class="p-6 rounded-lg md:col-span-2 scroll-reveal" style="transition-delay: 0.4s; background: rgba(255, 255, 255, 0.05);">
-                        <h3 class="text-xl font-bold mb-2 text-white">Judging & Fair Play (Tentative)</h3>
-                         <ul class="list-disc list-inside text-gray-300 space-y-2">
-                            <li><strong>Judging Criteria:</strong> Novelty/Innovation (30%), Technical Implementation (30%), Impact & Feasibility (20%), UX & Design (10%), Presentation & Q&A (10%).</li>
-                             <li>All work must be original and created during the 12-hour event. Pre-existing code or projects are not allowed.</li>
+                        <h3 class="text-xl font-bold mb-2 text-white">Judging & Fair Play</h3>
+                         <div class="text-left text-gray-300 space-y-4">
+                            <p><strong>Hackathon Judging Criteria</strong></p>
+                            <ul class="space-y-3 pl-4">
+                                <li>
+                                    <div class="flex justify-between items-center"><span>Innovation & Creativity</span><span class="font-bold text-yellow-400 bg-gray-700 px-2 py-1 text-sm rounded-md">20 points</span></div>
+                                    <ul class="list-disc list-inside text-sm text-gray-400 pl-4"><li>Originality of the idea, Uniqueness of approach</li></ul>
+                                </li>
+                                <li>
+                                    <div class="flex justify-between items-center"><span>Technical Implementation</span><span class="font-bold text-yellow-400 bg-gray-700 px-2 py-1 text-sm rounded-md">20 points</span></div>
+                                    <ul class="list-disc list-inside text-sm text-gray-400 pl-4"><li>Code quality & architecture, Use of tools/tech stack</li></ul>
+                                </li>
+                                 <li>
+                                    <div class="flex justify-between items-center"><span>Impact & Usefulness</span><span class="font-bold text-yellow-400 bg-gray-700 px-2 py-1 text-sm rounded-md">20 points</span></div>
+                                    <ul class="list-disc list-inside text-sm text-gray-400 pl-4"><li>Relevance to business or society, Scalability potential</li></ul>
+                                </li>
+                                <li>
+                                    <div class="flex justify-between items-center"><span>User Experience & Design</span><span class="font-bold text-yellow-400 bg-gray-700 px-2 py-1 text-sm rounded-md">15 points</span></div>
+                                    <ul class="list-disc list-inside text-sm text-gray-400 pl-4"><li>UI/UX quality, Ease of use, Visual appeal</li></ul>
+                                </li>
+                                <li>
+                                    <div class="flex justify-between items-center"><span>Presentation & Communication</span><span class="font-bold text-yellow-400 bg-gray-700 px-2 py-1 text-sm rounded-md">15 points</span></div>
+                                    <ul class="list-disc list-inside text-sm text-gray-400 pl-4"><li>Clarity of pitch, Demo effectiveness, Q&A</li></ul>
+                                </li>
+                                <li>
+                                    <div class="flex justify-between items-center"><span>Time Management & Completion</span><span class="font-bold text-yellow-400 bg-gray-700 px-2 py-1 text-sm rounded-md">10 points</span></div>
+                                    <ul class="list-disc list-inside text-sm text-gray-400 pl-4"><li>Working prototype readiness, Progress made</li></ul>
+                                </li>
+                            </ul>
+                            <p class="font-bold text-right mt-4">✅ Total: 100 points</p>
+                        </div>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2 mt-4 text-left">
+                            <li>All solutions must be software-based. No hardware components are permitted in the final judging.</li>
                              <li>Plagiarism or any form of academic dishonesty will result in immediate disqualification.</li>
                              <li>Teams retain full ownership (IP) of what they build.</li>
                         </ul>
@@ -519,17 +573,19 @@
         <section id="schedule" class="py-20 px-6 dark-section">
             <div class="container mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl section-title scroll-reveal">Tentative Event Day Schedule</h2>
-                    <p class="text-gray-400 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Here’s how the 12-hour marathon will unfold.</p>
+                    <h2 class="text-4xl section-title scroll-reveal">Hackathon Agenda - November 1st, 2025</h2>
+                    <p class="text-gray-400 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Here’s how the 12-hour innovation sprint will unfold.</p>
                 </div>
                 <div class="relative timeline">
-                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">08:00 - 09:00</h3><p class="font-semibold text-lg text-white">Registration & Breakfast</p></div>
-                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">09:00 - 09:30</h3><p class="font-semibold text-lg text-white">Opening Ceremony & Briefing</p></div>
-                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">09:30</h3><p class="font-semibold text-lg text-white">Hacking Begins!</p></div>
-                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">09:45 - 17:30</h3><p class="font-semibold text-lg text-white">Hacking & Mentorship Sessions</p></div>
-                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">17:30 - 18:30</h3><p class="font-semibold text-lg text-white">Finalize Prototype & Demo Prep</p></div>
-                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">18:30 - 19:30</h3><p class="font-semibold text-lg text-white">Team Demos & Presentations</p></div>
-                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-2xl font-bold" style="color: var(--college-gold);">19:30 - 20:00</h3><p class="font-semibold text-lg text-white">Awards & Closing Ceremony</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-xl md:text-2xl font-bold" style="color: var(--college-gold);">7:30 AM – 8:30 AM</h3><p class="font-semibold text-lg text-white">Registration & Breakfast</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-xl md:text-2xl font-bold" style="color: var(--college-gold);">8:30 AM – 9:00 AM</h3><p class="font-semibold text-lg text-white">Inauguration Ceremony</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-xl md:text-2xl font-bold" style="color: var(--college-gold);">9:00 AM – 1:00 PM</h3><p class="font-semibold text-lg text-white">Hackathon Begins! (Round 1)</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-xl md:text-2xl font-bold" style="color: var(--college-gold);">1:00 PM – 1:30 PM</h3><p class="font-semibold text-lg text-white">Lunch</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-xl md:text-2xl font-bold" style="color: var(--college-gold);">1:30 PM – 3:00 PM</h3><p class="font-semibold text-lg text-white">Round 2 – Team Presentations</p><p class="text-gray-300 text-sm">5–6 mins Presentation + 4–5 mins Q&A</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-xl md:text-2xl font-bold" style="color: var(--college-gold);">3:00 PM – 6:00 PM</h3><p class="font-semibold text-lg text-white">Round 3 – Finalized Prototype & Demo</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-xl md:text-2xl font-bold" style="color: var(--college-gold);">6:00 PM – 7:00 PM</h3><p class="font-semibold text-lg text-white">Team Demo Presentations</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-xl md:text-2xl font-bold" style="color: var(--college-gold);">7:00 PM – 7:30 PM</h3><p class="font-semibold text-lg text-white">Judging Panel – Deciding the Winners</p></div>
+                    <div class="timeline-item scroll-reveal"><div class="timeline-dot"></div><h3 class="text-xl md:text-2xl font-bold" style="color: var(--college-gold);">7:30 PM – 8:00 PM</h3><p class="font-semibold text-lg text-white">Prize Distribution & Closing Ceremony</p></div>
                 </div>
             </div>
         </section>
@@ -562,37 +618,35 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 px-6 dark-section">
+        <section id="contact" class="py-20 px-6">
              <div class="container mx-auto">
                 <div class="text-center mb-12">
                     <h2 class="text-4xl section-title scroll-reveal">Get In Touch</h2>
-                     <p class="text-gray-400 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Have more questions? Reach out to us through the coordinator or the contact form below.</p>
+                     <p class="text-gray-600 mt-2 max-w-2xl mx-auto scroll-reveal" style="transition-delay: 0.1s;">Have more questions? Reach out to our organizing team.</p>
                 </div>
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="scroll-reveal text-center md:text-left" style="transition-delay: 0.2s;">
-                         <h3 class="text-2xl font-bold mb-4 text-white">Event Coordinator</h3>
-                         <div class="inline-block p-8 rounded-lg text-center" style="background: rgba(255, 255, 255, 0.05);">
-                            <p class="text-xl font-semibold text-white">Dr. M. Preetha</p>
-                            <a href="tel:9443839811" class="text-2xl font-bold mt-2 block hover:underline" style="color: var(--college-gold);">📞 94438 39811</a>
+                <div class="max-w-4xl mx-auto text-center grid md:grid-cols-1 gap-8">
+                    <div class="card p-8 rounded-lg scroll-reveal" style="transition-delay: 0.2s;">
+                         <h3 class="text-2xl font-bold mb-2" style="color: var(--college-blue);">Event Convener</h3>
+                         <div class="mt-4">
+                            <p class="text-xl font-semibold text-gray-800">Dr. M. Preetha</p>
+                            <p class="text-gray-600">Head of Department, Computer Science and Engineering</p>
+                            <a href="tel:9443839811" class="text-lg font-semibold mt-2 block hover:underline" style="color: var(--college-gold);">Ph: 94438 39811</a>
                          </div>
                     </div>
-                    <div class="scroll-reveal" style="transition-delay: 0.3s;">
-                        <form action="https://api.web3forms.com/submit" method="POST" class="p-8 rounded-lg space-y-4" style="background: rgba(255, 255, 255, 0.05);">
-                            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <div class="card p-8 rounded-lg scroll-reveal" style="transition-delay: 0.3s;">
+                        <h3 class="text-2xl font-bold mb-2" style="color: var(--college-blue);">Event Coordinators</h3>
+                        <div class="mt-4 grid md:grid-cols-2 gap-8">
                              <div>
-                                 <label for="name" class="font-semibold text-gray-200">Name</label>
-                                 <input type="text" id="name" name="name" class="w-full mt-1 p-2 border border-gray-500 rounded-md bg-gray-700 text-white focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400" required>
+                                <p class="text-xl font-semibold text-gray-800">Ms. B. Umamaheswari</p>
+                                <p class="text-gray-600">Assistant Professor, Computer Science and Engineering</p>
+                                <a href="tel:9962103890" class="text-lg font-semibold mt-1 block hover:underline" style="color: var(--college-gold);">Ph: 99621 03890</a>
                              </div>
                              <div>
-                                 <label for="email" class="font-semibold text-gray-200">Email</label>
-                                 <input type="email" id="email" name="email" class="w-full mt-1 p-2 border border-gray-500 rounded-md bg-gray-700 text-white focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400" required>
+                                <p class="text-xl font-semibold text-gray-800">Ms. R. Reena</p>
+                                <p class="text-gray-600">Assistant Professor, Information Technology</p>
+                                <a href="tel:9840988141" class="text-lg font-semibold mt-1 block hover:underline" style="color: var(--college-gold);">Ph: 98409 88141</a>
                              </div>
-                             <div>
-                                 <label for="message" class="font-semibold text-gray-200">Message</label>
-                                 <textarea id="message" name="message" rows="4" class="w-full mt-1 p-2 border border-gray-500 rounded-md bg-gray-700 text-white focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400" required></textarea>
-                             </div>
-                             <button type="submit" class="w-full btn-gold py-3 rounded-md">Send Message</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
              </div>
@@ -603,11 +657,10 @@
     <!-- Footer -->
     <footer class="py-12 px-6 text-white" style="background-color: var(--college-blue);">
         <div class="container mx-auto text-center text-gray-300">
-             <img src="images/Prince-footer-Logo.png" alt="PSVPEC College Logo" class="h-16 md:h-20 mx-auto mb-4">
             <p class="font-bold text-lg">Prince Shri Venkateshwara Padmavathy Engineering College</p>
-            <p>An Autonomous Institution, Ponmar, Chennai - 127</p>
-            <p class="mt-2">Organized by the Department of CSE & IT</p>
-            <p class="mt-6 text-sm">&copy; 2025 INTELLECTHON. All Rights Reserved.</p>
+            <p>An Autonomous Institution</p>
+            <p class="mt-2 text-sm">Mambakkam - Medavakkam Main Road, Ponmar, Chennai, Tamil Nadu 600 127</p>
+            <p class="mt-6 text-sm">© 2025 PSVPEC Department of CSE & IT | All Rights Reserved</p>
         </div>
     </footer>
 
@@ -839,3 +892,4 @@
     </script>
 </body>
 </html>
+
